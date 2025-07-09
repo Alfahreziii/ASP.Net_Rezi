@@ -2,11 +2,13 @@ using Microsoft.AspNetCore.Mvc;
 using MahasiswaApi.Models;
 using MahasiswaApi.DTOs;
 using MahasiswaApi.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MahasiswaApi.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize] 
     public class MahasiswaController : ControllerBase
     {
         private readonly MahasiswaService _service;
