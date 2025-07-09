@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using MahasiswaApi.DTOs;
 using MahasiswaApi.Services;
+using Microsoft.AspNetCore.Identity;
 
 namespace MahasiswaApi.Controllers
 {
@@ -33,6 +34,8 @@ namespace MahasiswaApi.Controllers
         public IActionResult Register([FromBody] RegisterDto dto)
         {
             var user = _authService.Register(dto.Email, dto.Password);
+
+            
             if (user == null)
                 return Conflict(new { message = "Email already registered." });
 
