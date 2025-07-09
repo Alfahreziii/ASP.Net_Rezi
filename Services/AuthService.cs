@@ -4,6 +4,7 @@ using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using MahasiswaApi.Data;
+using Microsoft.AspNetCore.Identity;
 
 namespace MahasiswaApi.Services
 {
@@ -25,7 +26,9 @@ namespace MahasiswaApi.Services
 
         public bool CheckPassword(User user, string password)
         {
-            return user.Password == password;
+            var hasher = new PasswordHasher<User>();
+            var result = hasher.VerifyHashedPassword(user, user.Password, password);
+            return result == PasswordVerificationResult.Success;
         }
 
         public User? Authenticate(string email, string password)
@@ -38,14 +41,13 @@ namespace MahasiswaApi.Services
             if (_context.Users.Any(u => u.Email == email))
                 return null;
 
-            var user = new User
-            {
-                Email = email,
-                Password = password // Untuk produksi, hash password!
-            };
-            _context.Users.Add(user);
-            _context.SaveChanges();
-            return user;
+                var user = new User { Email = email };
+                var hasher = new PasswordHasher<User>();
+                user.Password = hasher.HashPassword(user, password);
+
+                _context.Users.Add(user);
+                _context.SaveChanges();
+                return user;
         }
 
         public string GenerateJwtToken(User user)
