@@ -176,3 +176,4 @@
 /Users/halokawan/Documents/ngoding-pribadi/magang/net/BelajarApi/bin/Debug/net8.0/System.Security.Cryptography.Xml.dll
 /Users/halokawan/Documents/ngoding-pribadi/magang/net/BelajarApi/bin/Debug/net8.0/runtimes/win/lib/net8.0/System.Security.Cryptography.Pkcs.dll
 /Users/halokawan/Documents/ngoding-pribadi/magang/net/BelajarApi/obj/Debug/net8.0/BelajarApi.sourcelink.json
+/Users/halokawan/Documents/ngoding-pribadi/magang/net/BelajarApi/bin/Debug/net8.0/BelajarApi.staticwebassets.runtime.json

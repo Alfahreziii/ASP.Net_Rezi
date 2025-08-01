@@ -1,11 +1,39 @@
 {
   "Version": 1,
-  "Hash": "a5iEBOwu+z642kKlmVZf01qq6yZfn4W5Z2vAK34+O3g=",
+  "Hash": "YJ9ofdNJPpgvaC2I4Z2iNhe5JAj+Pi/hpXOS2UQLTTk=",
   "Source": "BelajarApi",
   "BasePath": "_content/BelajarApi",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "BelajarApi/wwwroot",
+      "Source": "BelajarApi",
+      "ContentRoot": "/Users/halokawan/Documents/ngoding-pribadi/magang/net/BelajarApi/wwwroot/",
+      "BasePath": "_content/BelajarApi",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "/Users/halokawan/Documents/ngoding-pribadi/magang/net/BelajarApi/wwwroot/uploads/50dc51aa-0a88-466d-a592-f891ff5aa0ba.jpeg",
+      "SourceId": "BelajarApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/halokawan/Documents/ngoding-pribadi/magang/net/BelajarApi/wwwroot/",
+      "BasePath": "_content/BelajarApi",
+      "RelativePath": "uploads/50dc51aa-0a88-466d-a592-f891ff5aa0ba.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/uploads/50dc51aa-0a88-466d-a592-f891ff5aa0ba.jpeg"
+    }
+  ]
 }

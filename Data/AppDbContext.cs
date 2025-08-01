@@ -1,12 +1,16 @@
+// File: AppDbContext.cs
 using Microsoft.EntityFrameworkCore;
 using MahasiswaApi.Models;
+using FakultasApi.Models;
 
-namespace MahasiswaApi.Data;
-
-public class AppDbContext : DbContext
+namespace MahasiswaApi.Data // INI PENTING! Pastikan namespace ini sesuai
 {
-    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
+    public class AppDbContext : DbContext
+    {
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
-    public DbSet<Mahasiswa> Mahasiswas => Set<Mahasiswa>();
-    public DbSet<User> Users => Set<User>();
+        public DbSet<Mahasiswa> Mahasiswas { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Fakultas> Fakultas { get; set; }
+    }
 }

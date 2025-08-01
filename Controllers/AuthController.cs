@@ -31,11 +31,22 @@ namespace MahasiswaApi.Controllers
             return Ok(new { token });
         }
         [HttpPost("register")]
-        public IActionResult Register([FromBody] RegisterDto dto)
+        public async Task<IActionResult> Register([FromForm] string email, [FromForm] string password, [FromForm] IFormFile? photo)
         {
-            var user = _authService.Register(dto.Email, dto.Password);
+            string? photoPath = null;
+            if (photo != null)
+            {
+                var fileName = Guid.NewGuid() + Path.GetExtension(photo.FileName);
+                var savePath = Path.Combine("wwwroot", "uploads", fileName);
+                Directory.CreateDirectory(Path.GetDirectoryName(savePath)!);
+                using (var stream = new FileStream(savePath, FileMode.Create))
+                {
+                    await photo.CopyToAsync(stream);
+                }
+                photoPath = "/uploads/" + fileName;
+            }
 
-            
+            var user = _authService.Register(email, password, photoPath);
             if (user == null)
                 return Conflict(new { message = "Email already registered." });
 

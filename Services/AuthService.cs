@@ -1,9 +1,9 @@
 using MahasiswaApi.Models;
 using System.IdentityModel.Tokens.Jwt;
+using MahasiswaApi.Data;
 using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using MahasiswaApi.Data;
 using Microsoft.AspNetCore.Identity;
 
 namespace MahasiswaApi.Services
@@ -35,19 +35,18 @@ namespace MahasiswaApi.Services
         {
             return _context.Users.FirstOrDefault(u => u.Email == email && u.Password == password);
         }
-        public User? Register(string email, string password)
+        public User? Register(string email, string password, string? photoUrl = null)
         {
-            // Cek jika email sudah terdaftar
             if (_context.Users.Any(u => u.Email == email))
                 return null;
 
-                var user = new User { Email = email };
-                var hasher = new PasswordHasher<User>();
-                user.Password = hasher.HashPassword(user, password);
+            var user = new User { Email = email, PhotoUrl = photoUrl };
+            var hasher = new PasswordHasher<User>();
+            user.Password = hasher.HashPassword(user, password);
 
-                _context.Users.Add(user);
-                _context.SaveChanges();
-                return user;
+            _context.Users.Add(user);
+            _context.SaveChanges();
+            return user;
         }
 
         public string GenerateJwtToken(User user)
